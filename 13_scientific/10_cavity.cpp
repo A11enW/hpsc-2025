@@ -90,13 +90,13 @@ int main() {
     	const double vnji = vn[j][i];
 	//for u
 	const double conv_u_x = unji * dt / dx * (unji - un[j][i - 1]);
-    	const double conv_u_y = vnji * dt / dy * (unji - un[j - 1][i]);
+    	const double conv_u_y = unji * dt / dy * (unji - un[j - 1][i]);
     	const double pres_u   = dt / (2.0 * rho * dx) * (p[j][i + 1] - p[j][i - 1]);
     	const double diff_u_x = nu * dt / (dx * dx) * (un[j][i + 1] - 2.0 * unji + un[j][i - 1]);
     	const double diff_u_y = nu * dt / (dy * dy) * (un[j + 1][i] - 2.0 * unji + un[j - 1][i]);
 	u[j][i] = static_cast<float>(unji- conv_u_x - conv_u_y - pres_u + diff_u_x + diff_u_y);
 	//for v
-	const double conv_v_x = unji * dt / dx * (vnji       - vn[j][i - 1]);
+	const double conv_v_x = vnji * dt / dx * (vnji       - vn[j][i - 1]);
     	const double conv_v_y = vnji * dt / dy * (vnji       - vn[j - 1][i]);
     	const double pres_v   = dt / (2.0 * rho * dx) * (p[j + 1][i] - p[j - 1][i]);
     	const double diff_v_x = nu * dt / (dx * dx) * (vn[j][i + 1] - 2.0 * vnji + vn[j][i - 1]);
